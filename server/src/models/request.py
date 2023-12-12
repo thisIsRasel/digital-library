@@ -8,7 +8,7 @@ class BookInputModel(CustomModel):
     )
     author: str
     publication_year: int = Field(
-        gt=1000
+        gt=0
     )
     summary: str = Field(
         max_length=300
