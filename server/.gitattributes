@@ -1,0 +1,6 @@
+# Set text files to use LF line endings
+* text=auto
+
+# Explicitly specify files or patterns
+*.txt text
+*.sh text
