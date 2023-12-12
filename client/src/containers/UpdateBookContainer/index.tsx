@@ -1,13 +1,15 @@
 import BookForm from "../../components/BookForm";
-import {useGetBookQuery, useUpdateBookMutation} from "../../services/book.service.ts";
+import {useGetBookQuery, useUpdateBookMutation, bookService} from "../../services/book.service.ts";
 import {Book} from "../../models/Book.ts";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 const UpdateBookContainer = ({id}: { id: number }) => {
     const {data, isLoading} = useGetBookQuery(id);
     const [updateBook] = useUpdateBookMutation();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         console.log(data);
@@ -19,6 +21,8 @@ const UpdateBookContainer = ({id}: { id: number }) => {
         if (result) {
             console.log("Book updated successfully");
             navigate('/books');
+            dispatch(bookService.util?.invalidateTags([{ type: 'Books', id }]));
+            dispatch(bookService.util?.invalidateTags(['Books']));
         }
     }
 

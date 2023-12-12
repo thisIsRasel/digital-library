@@ -12,29 +12,29 @@ export const bookService = createApi({
         }),
         getBook: builder.query({
             query: (id) => `/books/${id}`,
+            providesTags: (result, error, arg) => [
+                { type: 'Books', id: arg.id },
+            ],
         }),
         createBook: builder.mutation({
             query: (body) => ({
                 url: '/books',
                 method: 'POST',
                 body,
-            }),
-            invalidatesTags: ['Books'],
+            })
         }),
         updateBook: builder.mutation({
             query: ({id, ...patch}) => ({
                 url: `/books/${id}`,
                 method: 'put',
                 body: patch,
-            }),
-            invalidatesTags: ['Books'],
+            })
         }),
         deleteBook: builder.mutation({
             query: (id) => ({
                 url: `/books/${id}`,
                 method: 'DELETE',
-            }),
-            invalidatesTags: ['Books'],
+            })
         })
     }),
 });
