@@ -1,7 +1,7 @@
 # Digital Library
-This project is a Library Management System that includes a user-friendly frontend developed using React, a RESTful API backend built with Python, and a database for storing book records. Additionally, a full-text search functionality for books has been implemented to enhance the user experience.
+Welcome to the Digital Library Management System! This application includes a user-friendly frontend developed using React, a RESTful API backend built with Python, and a database for storing book records. Additionally, a full-text search functionality for books has been implemented to enhance the user experience.
 
-## Features:
+## Features
 - Frontend:
   - Developed using React and JavaScript.
   - Provides a user-friendly interface for easy navigation and interaction.
@@ -19,23 +19,26 @@ This project is a Library Management System that includes a user-friendly fronte
 - Deployment:
   - Containerized the application using Docker for easy deployment.
 
-## Prjoect Setup
-Run the following commands step by step to setup and access the project.
+## Prerequisites
+Need to have [docker](https://www.docker.com/get-started/) installed in the machine.
 
-- First Build Only
+## Installation
+Clone the repository and run the following commands in order step by step in project root directory to setup and access the application.
 
-  1. `docker network create app_main`
-  2. `docker-compose up -d --build`
+1. Build
+```bash
+docker network create app_main
+docker-compose up -d --build
+```
 
-- Run Migrations
+2. Run Migrations
+```bash
+docker compose exec app_server alembic upgrade head
+```
 
-  3. `docker compose exec app_server alembic upgrade head`
+3. Open your browser and go to http://localhost:3000/
 
-- Access the application
-
-  4. Open your browser and go to http://localhost:3000
-
-### Performance consideration
+## Performance Consideration
 Performance can be improved using load balancer for distributing incomming traffic to multiple servers.
 
 ## Future Improvements
