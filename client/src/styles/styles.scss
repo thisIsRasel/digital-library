@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Inter Regular';
+  src: url('/fonts/inter/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter Medium';
+  src: url('/fonts/inter/Inter-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+.content {
+  @apply h-[calc(100vh-110px)] overflow-auto;
+}
+
+.library-input {
+  @apply border-1 border-solid border-gray-dark rounded-8 py-8 px-14 outline-none text-md bg-white;
+}
